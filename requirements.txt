@@ -1,0 +1,17 @@
+# --- AI Agents ---
+autogen-agentchat==0.7.5
+autogen-core==0.7.5
+autogen-ext[openai]==0.7.5
+
+# --- Backend API ---
+fastapi==0.141.1
+uvicorn[standard]==0.54.0
+pydantic-settings==2.15.0
+
+# --- Frontend ---
+streamlit==1.64.0
+
+# --- Utilities ---
+requests==2.34.2
+python-dotenv==1.2.3
+deepeval==4.2.6

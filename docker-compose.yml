@@ -1,0 +1,28 @@
+services:
+  backend:
+    build:
+      context: .
+      dockerfile: docker/Dockerfile.backend
+    container_name: support_backend
+    env_file:
+      - .env
+    ports:
+      - "127.0.0.1:8001:8000"
+    volumes:
+      - ./data:/app/data
+      - ./logs:/app/logs
+    restart: unless-stopped
+
+  frontend:
+    build:
+      context: .
+      dockerfile: docker/Dockerfile.frontend
+    container_name: support_frontend
+    environment:
+      - BACKEND_URL=http://backend:8000
+    ports:
+      - "127.0.0.1:8502:8501"
+    depends_on:
+      backend:
+        condition: service_healthy
+    restart: unless-stopped
